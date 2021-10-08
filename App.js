@@ -1,9 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View, StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 import Cardapio from './componentes/Cardapio';
-import { createStackNavigator } from '@react-navigation/stack';
 
 
 // const Stack = createStackNavigator();
