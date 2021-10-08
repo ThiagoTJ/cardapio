@@ -1,24 +1,31 @@
-import React from 'react';
-import { StyleSheet, Text, View, StatusBar } from 'react-native';
+import React, {useState} from 'react';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import 'react-native-gesture-handler';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import {Context} from './componentes/Context'
 import Cardapio from './componentes/Cardapio';
+import FinalizarPedido from './componentes/FinalzarPedido';
 
 
-// const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
 export default function App() {
+
+  const [data, setData] = useState([]);
+  
   return (
-    // <NavigationContainer>
+    <NavigationContainer>
       <View style={styles.container}>
         <StatusBar style="auto" />
-        <Cardapio/>
-        {/* <Stack.Navigator>
-          <Stack.Screen name='Cardapio' component={Cardapio}/>
-        </Stack.Navigator> */}
+        <Context.Provider value={{data, setData}}>
+        <Stack.Navigator initialRouteName='Cardapio'>
+          <Stack.Screen name='Cardapio' component={Cardapio} />
+          <Stack.Screen name='FinalizarPedido' component={FinalizarPedido} />
+        </Stack.Navigator>
+        </Context.Provider>
       </View>
-    // </NavigationContainer>
+    </NavigationContainer>
   );
 }
 

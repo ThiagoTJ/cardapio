@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, FlatList, Image, SafeAreaView, ScrollView } from 'react-native'
+import React, { useEffect, useState, useContext } from 'react';
+import { View, Text, FlatList, Image, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native'
+import FinalizarPedido from './FinalzarPedido';
+import { Context } from './Context';
 
 
-export default function Cardapio() {
+export default function Cardapio({navigation}) {
 
 
     const [isLoading, setLoading] = useState(true);
-    const [data, setData] = useState([]);
+    const {data, setData} = useContext(Context)
 
     const getMenu = async () => {
         try {
@@ -24,6 +26,7 @@ export default function Cardapio() {
         getMenu();
     }, []);
 
+    console.log(data)
 
     return (
         <SafeAreaView style={{ flex: 1 }}>
@@ -52,24 +55,29 @@ export default function Cardapio() {
 
                     <FlatList
                         data={data.combos}
+                        keyExtractor={(item) => item.id}
                         renderItem={({ item }) => (
-                            <View style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: '#bfbfbf', borderRadius: 30, flexDirection: 'row' }}>
-                                <Image
-                                    style={{ height: 180, width: 120, borderTopLeftRadius: 30, borderBottomLeftRadius: 30 }}
-                                    source={{ uri: item.image }}
-                                />
-                                <View style={{ width: 200, justifyContent: 'space-between', marginLeft: 10, paddingVertical: 15 }}>
-                                    <Text style={{ fontSize: 16 }}>
-                                        {item.name}
-                                    </Text>
-                                    <Text>
-                                        {item.description}
-                                    </Text>
-                                    <Text style={{ textAlign: 'right' }}>
-                                        R$ {item.price}
-                                    </Text>
+                            <TouchableOpacity
+                                onPress={() => { navigation.navigate('FinalizarPedido', item.id)}}
+                            >
+                                <View style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: '#e5e4e2', borderRadius: 30, flexDirection: 'row' }}>
+                                    <Image
+                                        style={{ height: 180, width: 120, borderTopLeftRadius: 30, borderBottomLeftRadius: 30 }}
+                                        source={{ uri: item.image }}
+                                    />
+                                    <View style={{ width: 200, justifyContent: 'space-between', marginLeft: 10, paddingVertical: 15 }}>
+                                        <Text style={{ fontSize: 16 }}>
+                                            {item.name}
+                                        </Text>
+                                        <Text style={{color:'grey'}}>
+                                            {item.description}
+                                        </Text>
+                                        <Text style={{ textAlign: 'right' }}>
+                                            R$ {item.price}
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         )}
                     />
 
@@ -82,23 +90,27 @@ export default function Cardapio() {
                     <FlatList
                         data={data.drinks}
                         renderItem={({ item }) => (
-                            <View style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: '#bfbfbf', borderRadius: 30, flexDirection: 'row' }}>
-                                <Image
-                                    style={{ height: 180, width: 120, borderTopLeftRadius: 30, borderBottomLeftRadius: 30 }}
-                                    source={{ uri: item.image }}
-                                />
-                                <View style={{ width: 200, justifyContent: 'space-between', marginLeft: 10, paddingVertical: 15 }}>
-                                    <Text style={{ fontSize: 16 }}>
-                                        {item.name}
-                                    </Text>
-                                    <Text>
-                                        {item.description}
-                                    </Text>
-                                    <Text style={{ textAlign: 'right' }}>
-                                        R$ {item.price}
-                                    </Text>
+                            <TouchableOpacity
+                                onPress={() => { }}
+                            >
+                                <View style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: '#e5e4e2', borderRadius: 30, flexDirection: 'row' }}>
+                                    <Image
+                                        style={{ height: 180, width: 120, borderTopLeftRadius: 30, borderBottomLeftRadius: 30 }}
+                                        source={{ uri: item.image }}
+                                    />
+                                    <View style={{ width: 200, justifyContent: 'space-between', marginLeft: 10, paddingVertical: 15 }}>
+                                        <Text style={{ fontSize: 16 }}>
+                                            {item.name}
+                                        </Text>
+                                        <Text style={{color:'grey'}}>
+                                            {item.description}
+                                        </Text>
+                                        <Text style={{ textAlign: 'right' }}>
+                                            R$ {item.price}
+                                        </Text>
+                                    </View>
                                 </View>
-                            </View>
+                            </TouchableOpacity>
                         )}
                     />
                 </ScrollView>
