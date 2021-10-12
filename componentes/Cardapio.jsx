@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, FlatList, Image, SafeAreaView, ScrollView, TouchableOpacity } from 'react-native'
-import FinalizarPedido from './FinalzarPedido';
 import { Context } from './Context';
 
 
@@ -9,24 +8,6 @@ export default function Cardapio({navigation}) {
 
     const [isLoading, setLoading] = useState(true);
     const {data, setData} = useContext(Context)
-
-    const getMenu = async () => {
-        try {
-            const response = await fetch('https://615b13564a360f0017a8147e.mockapi.io/menu');
-            const menu = await response.json();
-            setData(menu[0]);
-        } catch (error) {
-            console.error(error);
-        } finally {
-            setLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        getMenu();
-    }, []);
-
-    console.log(data)
 
     return (
         <SafeAreaView style={{ flex: 1 }}>

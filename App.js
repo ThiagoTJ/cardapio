@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {Context} from './componentes/Context'
 import Cardapio from './componentes/Cardapio';
 import FinalizarPedido from './componentes/FinalzarPedido';
+import TelaInicial from './componentes/TelaInicial';
 
 
 const Stack = createStackNavigator();
@@ -19,7 +20,8 @@ export default function App() {
       <View style={styles.container}>
         <StatusBar style="auto" />
         <Context.Provider value={{data, setData}}>
-        <Stack.Navigator initialRouteName='Cardapio'>
+        <Stack.Navigator initialRouteName='TelaInicial' screenOptions={{headerShown: false}}>
+          <Stack.Screen name='TelaInicial' component={TelaInicial} />
           <Stack.Screen name='Cardapio' component={Cardapio} />
           <Stack.Screen name='FinalizarPedido' component={FinalizarPedido} />
         </Stack.Navigator>
