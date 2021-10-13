@@ -37,7 +37,7 @@ export default function Cardapio({ navigation }) {
                     <FlatList
                         data={data.combos}
                         keyExtractor={(item) => item.id}
-                        renderItem={({ item, index }) => {
+                        renderItem={({ item }) => {
                             return (
                                 <TouchableOpacity
                                     onPress={() => { navigation.navigate('FinalizarPedido', { itemDesc: item.description, itemName: item.name, itemPrice: item.price, itemImg: item.image }) }}
@@ -74,7 +74,7 @@ export default function Cardapio({ navigation }) {
                         data={data.drinks}
                         renderItem={({ item }) => (
                             <TouchableOpacity
-                                onPress={() => { navigation.navigate('FinalizarPedido', { itemDesc: item.description, itemName: item.name, itemPrice: item.price, itemImg: item.image })}}
+                                onPress={() => { navigation.navigate('FinalizarPedido', { itemDesc: item.description, itemName: item.name, itemPrice: item.price, itemImg: item.image }) }}
                             >
                                 <View style={{ marginHorizontal: 20, marginVertical: 5, backgroundColor: '#e5e4e2', borderRadius: 30, flexDirection: 'row' }}>
                                     <Image
