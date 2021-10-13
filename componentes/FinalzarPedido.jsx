@@ -13,9 +13,9 @@ export default function FinalizarPedido({ route, navigation }) {
     }
     const decrementar = () => {
         if (count > 1) {
-          setCount(count - 1);
+            setCount(count - 1);
         }
-      };
+    };
 
     return (
         <View style={{ flex: 1 }}>
@@ -41,13 +41,13 @@ export default function FinalizarPedido({ route, navigation }) {
                         </View>
                         <View style={{ flexDirection: 'row' }}>
                             <TouchableOpacity
-                                onPress={()=> decrementar()}
+                                onPress={() => decrementar()}
                                 style={{ width: 40, height: 50, borderTopLeftRadius: 15, borderBottomLeftRadius: 15, borderTopWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderColor: '#e5e4e2' }}
                             >
                                 <Text style={{ textAlign: 'center', justifyContent: 'center', fontSize: 32, color: 'grey' }}>-</Text>
                             </TouchableOpacity>
 
-                            <Text style={{ width: 30, height: 50, borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#e5e4e2', textAlign: 'center', paddingTop: '2.5%', fontSize: 24 }}> {count} </Text>
+                            <Text style={{ width: 40, height: 50, borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#e5e4e2', textAlign: 'center', paddingTop: '2.5%', fontSize: 24 }}> {count} </Text>
 
                             <TouchableOpacity
                                 onPress={() => incrementar()}
@@ -58,10 +58,17 @@ export default function FinalizarPedido({ route, navigation }) {
                         </View>
                         <View>
                             <Text style={{ color: 'grey', fontSize: 18 }}> Observações </Text>
-                            <TextInput
-                                style={{ borderWidth: 1, borderRadius: 15, borderColor: '#e5e4e2', padding: 10, height: 100 }}
-                                placeholder={'Digite sua observação aqui'}
-                            />
+
+                            <View style={{ borderWidth: 1, borderRadius: 15, borderColor: '#e5e4e2', paddingHorizontal: 10, paddingVertical: 5, height: 100 }}>
+                                <TextInput
+                                    style={{ height: '100%', padding: 0, }}
+                                    placeholder={'Digite sua observação aqui'}
+                                    maxLength={500}
+                                    multiline
+                                    numberOfLines={4}
+                                    editable
+                                />
+                            </View>
                         </View>
                     </View>
                 </View>
