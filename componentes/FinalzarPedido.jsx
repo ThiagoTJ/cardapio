@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
 
 
@@ -6,7 +6,16 @@ import { View, Text, Image, TouchableOpacity, TextInput } from 'react-native';
 export default function FinalizarPedido({ route, navigation }) {
 
     const { itemDesc, itemName, itemPrice, itemImg } = route.params;
+    const [count, setCount] = useState(1);
 
+    const incrementar = () => {
+        setCount(count + 1)
+    }
+    const decrementar = () => {
+        if (count > 1) {
+          setCount(count - 1);
+        }
+      };
 
     return (
         <View style={{ flex: 1 }}>
@@ -32,12 +41,16 @@ export default function FinalizarPedido({ route, navigation }) {
                         </View>
                         <View style={{ flexDirection: 'row' }}>
                             <TouchableOpacity
+                                onPress={()=> decrementar()}
                                 style={{ width: 40, height: 50, borderTopLeftRadius: 15, borderBottomLeftRadius: 15, borderTopWidth: 1, borderBottomWidth: 1, borderLeftWidth: 1, borderColor: '#e5e4e2' }}
                             >
                                 <Text style={{ textAlign: 'center', justifyContent: 'center', fontSize: 32, color: 'grey' }}>-</Text>
                             </TouchableOpacity>
-                            <Text style={{ width: 30, height: 50, borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#e5e4e2' }}> { } </Text>
+
+                            <Text style={{ width: 30, height: 50, borderTopWidth: 1, borderBottomWidth: 1, borderColor: '#e5e4e2', textAlign: 'center', paddingTop: '2.5%', fontSize: 24 }}> {count} </Text>
+
                             <TouchableOpacity
+                                onPress={() => incrementar()}
                                 style={{ width: 40, height: 50, borderTopRightRadius: 15, borderBottomRightRadius: 15, borderTopWidth: 1, borderBottomWidth: 1, borderRightWidth: 1, borderColor: '#e5e4e2' }}
                             >
                                 <Text style={{ textAlign: 'center', justifyContent: 'center', fontSize: 32, color: 'red' }}>+</Text>
@@ -55,7 +68,10 @@ export default function FinalizarPedido({ route, navigation }) {
                 <View style={{ height: 120, justifyContent: 'space-between' }}>
                     <View>
                         <Text>Total</Text>
-                        <Text style={{ fontSize: 20, color: 'green' }}>R$ {itemPrice}</Text>
+                        <View style={{ flexDirection: 'row' }}>
+                            <Text style={{ fontSize: 20 }}>R$ </Text>
+                            <Text style={{ fontSize: 20, color: 'green' }}>{(itemPrice * count).toFixed(2)}</Text>
+                        </View>
                     </View>
                     <TouchableOpacity
                         style={{ backgroundColor: 'red', height: 50, justifyContent: 'center', alignItems: 'center', borderRadius: 30 }}

@@ -27,7 +27,7 @@ export default function Cardapio({ navigation }) {
                     </Text>
                 </View>
                 <ScrollView>
-                    <View style={{ marginHorizontal: 30, marginBottom: 10 }}>
+                    <View style={{ marginHorizontal: 30 }}>
                         <Text style={{ fontSize: 20, }}>
                             Combos
                         </Text>
@@ -38,7 +38,6 @@ export default function Cardapio({ navigation }) {
                         data={data.combos}
                         keyExtractor={(item) => item.id}
                         renderItem={({ item, index }) => {
-                            console.log(item[index])
                             return (
                                 <TouchableOpacity
                                     onPress={() => { navigation.navigate('FinalizarPedido', { itemDesc: item.description, itemName: item.name, itemPrice: item.price, itemImg: item.image }) }}

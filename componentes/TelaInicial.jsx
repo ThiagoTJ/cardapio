@@ -36,7 +36,7 @@ export default function TelaInicial({ navigation }) {
                         <Text style={{ textAlign: 'center', fontSize: 34, fontWeight: 'bold' }}>Com fome?</Text>
                         <Text style={{ textAlign: 'center', fontSize: 18 }}>Nós resolvemos isso</Text>
                     </View>
-                    <Text style={{ textAlign: 'center' }}>Faça seu pedido agora mesmo na IT Burguer e aproveite os descontos e vantagens de nossa plataforma</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 16, color: 'grey' }}>Faça seu pedido agora mesmo na IT Burguer e aproveite os descontos e vantagens de nossa plataforma</Text>
                 </View>
                 <TouchableOpacity
                     style={{ width: '90%', height: 50, borderRadius: 30, backgroundColor: 'red', justifyContent: 'center', alignSelf: 'center' }}
