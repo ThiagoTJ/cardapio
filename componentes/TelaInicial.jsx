@@ -6,7 +6,7 @@ import { Context } from './Context';
 export default function TelaInicial({ navigation }) {
 
     const [isLoading, setLoading] = useState(true);
-    const { data, setData } = useContext(Context)
+    const { setData } = useContext(Context)
 
     const getMenu = async () => {
         try {
@@ -42,7 +42,7 @@ export default function TelaInicial({ navigation }) {
                     style={{ width: '90%', height: 50, borderRadius: 30, backgroundColor: 'red', justifyContent: 'center', alignSelf: 'center' }}
                     onPress={() => { navigation.navigate('Cardapio') }}
                 >
-                    <Text style={{ textAlign: 'center' }}>Ver Cardápio</Text>
+                    <Text style={{ textAlign: 'center', fontSize: 20, color: 'white' }}>Ver Cardápio</Text>
                 </TouchableOpacity>
             </View>
         </View>
